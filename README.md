@@ -40,7 +40,7 @@ So if you have used `WP-CLI` to scaffold your `PHP_UnitTest` (which you should),
 
 ```yaml
 # Our base image
-image: wpquark/wptest-php-nodejs-grunt:wp4.8-stable
+image: wpquark/wptest-php-nodejs-grunt:version-4.8
 
 # mysql service
 services:
