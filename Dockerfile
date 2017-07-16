@@ -12,6 +12,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # Update our repository
 RUN apt-get update -yqq
+RUN apt-get install apt-utils -yqq
 
 # Install git
 RUN apt-get install git -yqq
@@ -54,7 +55,7 @@ ENV WP_TESTS_TAG "tags/4.8"
 
 # Download WordPress from source
 RUN mkdir -p $WP_CORE_DIR
-RUN curl -s "https://wordpress.org/${ARCHIVE_NAME}.tar.gz" > "/tmp/wordpress.tar.gz" && \
+RUN curl -s "https://wordpress.org/wordpress-${WP_VERSION}.tar.gz" > "/tmp/wordpress.tar.gz" && \
   tar --strip-components=1 -zxmf /tmp/wordpress.tar.gz -C $WP_CORE_DIR
 
 # Get the test data from SVN
