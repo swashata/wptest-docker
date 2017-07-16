@@ -27,11 +27,20 @@ In this attempt, I am creating a docker which would have the following installed
 	* Downloaded WordPress latest.zip with proper environment setup. - `WP_CORE_DIR`
 	* SVN-ed WordPress test libraries with proper environment setup. - `WP_TESTS_DIR`
 
+For `WP_UnitTest` the following environment variables are set:
+
+* `WP_CORE_DIR` "/tmp/wordpress/"
+* `WP_TESTS_DIR` "/tmp/wordpress-tests-lib"
+* `WP_VERSION` "4.8"
+* `WP_TESTS_TAG` "tags/4.8"
+
+So if you have used `WP-CLI` to scaffold your `PHP_UnitTest` (which you should), you are covered. The install will run to only setup the databse variables and the test-config file.
+
 ## Sample `.gitlab-ci.yml` configuration
 
 ```yaml
 # Our base image
-image: wpquark/wptest-php-nodejs-grunt:test
+image: wpquark/wptest-php-nodejs-grunt:wp4.8
 
 # mysql service
 services:
@@ -57,7 +66,6 @@ variables:
   # Configure mysql service (https://hub.docker.com/_/mysql/)
   MYSQL_DATABASE: wordpress_tests
   MYSQL_ROOT_PASSWORD: mysql
-  WP_VERSION: latest
   WP_MULTISITE: "0"
 
 # We test on php7
