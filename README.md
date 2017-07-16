@@ -29,4 +29,59 @@ In this attempt, I am creating a docker which would have the following installed
 
 ## Sample `.gitlab-ci.yml` configuration
 
-> // TODO
+```yaml
+# Our base image
+image: wpquark/wptest-php-nodejs-grunt:test
+
+# mysql service
+services:
+- mysql
+
+# Select what we should cache
+cache:
+  paths:
+  - vendor/
+  - node_modules/
+
+before_script:
+# Install npm dependencies
+- npm install
+
+# Install composer
+- composer install
+
+# Install WordPress PHPUnit Test
+- bash bin/install-wp-tests.sh wordpress_test root mysql mysql $WP_VERSION
+
+variables:
+  # Configure mysql service (https://hub.docker.com/_/mysql/)
+  MYSQL_DATABASE: wordpress_tests
+  MYSQL_ROOT_PASSWORD: mysql
+  WP_VERSION: latest
+  WP_MULTISITE: "0"
+
+# We test on php7
+# default job
+default-job:
+  tags:
+    - wordpress
+  script:
+  - grunt
+  except:
+    - tags
+
+# release job on tag
+release-job:
+  tags:
+    - wordpress
+  image: php:7
+  script:
+    - grunt release
+  artifacts:
+    paths:
+      - build/wpq-social-press.zip
+  only:
+   - tags
+```
+
+The above is what we use in our `gitlab-ci.yml`.
