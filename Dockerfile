@@ -12,7 +12,6 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # Update our repository
 RUN apt-get update -yqq
-RUN apt-get install apt-utils -yqq
 
 # Install git
 RUN apt-get install git -yqq
