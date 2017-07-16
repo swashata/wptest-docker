@@ -36,7 +36,10 @@ RUN wget https://phar.phpunit.de/phpunit-6.1.phar && \
   mv phpunit-6.1.phar /usr/local/bin/phpunit
 
 # Install composer
-RUN curl -sS https://getcomposer.org/installer | php
+RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
+  && curl -o /tmp/composer-setup.sig https://composer.github.io/installer.sig \
+  && php -r "if (hash('SHA384', file_get_contents('/tmp/composer-setup.php')) !== trim(file_get_contents('/tmp/composer-setup.sig'))) { unlink('/tmp/composer-setup.php'); echo 'Invalid installer' . PHP_EOL; exit(1); }" \
+  && php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer && rm -rf /tmp/composer-setup.php
 
 # Install Node
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash
