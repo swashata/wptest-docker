@@ -82,7 +82,6 @@ default-job:
 release-job:
   tags:
     - wordpress
-  image: php:7
   script:
     - grunt release
   artifacts:
