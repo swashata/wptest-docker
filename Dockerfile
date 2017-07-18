@@ -18,7 +18,7 @@ RUN apt-get install git -yqq
 
 # Install core dependencies
 RUN apt-get install -yqqf --fix-missing \
-  vim wget curl zip unzip subversion mysql-client libmcrypt-dev libmysqlclient-dev zip unzip openssh-client
+  vim wget curl zip unzip subversion mysql-client libmcrypt-dev libmysqlclient-dev zip unzip openssh-client gettext
 
 # Install MYSQL driver
 RUN docker-php-ext-install mysqli pdo_mysql mbstring

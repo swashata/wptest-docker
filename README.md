@@ -20,13 +20,12 @@ In this attempt, I am creating a docker which would have the following installed
 * `PHP-7.0`
 * `Nodejs` and `npm`
 * `Git`
-* `vim wget zip unzip subversion mysql-client libmcrypt-dev libmysqlclient-dev zip unzip openssh-client`
+* `vim wget zip unzip subversion mysql-client libmcrypt-dev libmysqlclient-dev zip unzip openssh-client gettext`
 * `PHPUnit` - PHAR Install.
-* `Composer`
-* `WP-CLI` setup for WordPress unit testing:
+* `Composer` - PHAR Install.
+* `WP-CLI` setup for WordPress unit testing: ( `/usr/local/bin/wp` )
 	* Downloaded WordPress latest.zip with proper environment setup. - `WP_CORE_DIR`
 	* SVN-ed WordPress test libraries with proper environment setup. - `WP_TESTS_DIR`
-*
 
 For `WP_UnitTest` the following environment variables are set:
 
@@ -41,7 +40,7 @@ So if you have used `WP-CLI` to scaffold your `PHP_UnitTest` (which you should),
 
 ```yaml
 # Our base image
-image: wpquark/wptest-php-nodejs-grunt:version-4.8
+image: wpquark/wptest-php-nodejs-grunt:latest
 
 # mysql service
 services:
@@ -92,4 +91,4 @@ release-job:
    - tags
 ```
 
-The above is what we use in our `gitlab-ci.yml`.
+The above is just a sample. In real world, we use multiple stages with `test > build > deploy (staging > production)` strategy. Check gitlab documentation for information on that.
