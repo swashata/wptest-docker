@@ -20,12 +20,13 @@ In this attempt, I am creating a docker which would have the following installed
 * `PHP-7.0`
 * `Nodejs` and `npm`
 * `Git`
-* `vim wget zip unzip subversion mysql-client libmcrypt-dev libmysqlclient-dev`
+* `vim wget zip unzip subversion mysql-client libmcrypt-dev libmysqlclient-dev zip unzip openssh-client`
 * `PHPUnit` - PHAR Install.
 * `Composer`
 * `WP-CLI` setup for WordPress unit testing:
 	* Downloaded WordPress latest.zip with proper environment setup. - `WP_CORE_DIR`
 	* SVN-ed WordPress test libraries with proper environment setup. - `WP_TESTS_DIR`
+*
 
 For `WP_UnitTest` the following environment variables are set:
 
