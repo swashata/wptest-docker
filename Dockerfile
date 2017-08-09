@@ -52,13 +52,16 @@ RUN apt-get install -yqq nodejs
 # Install grunt-cli
 RUN npm install -g grunt-cli
 
+# Install bower
+RUN npm install -g bower
+
 # Setup WordPress PHPUnit Testing environment
 
 # Setup environment
 ENV WP_CORE_DIR "/tmp/wordpress/"
 ENV WP_TESTS_DIR "/tmp/wordpress-tests-lib"
-ENV WP_VERSION "4.8"
-ENV WP_TESTS_TAG "tags/4.8"
+ENV WP_VERSION "4.8.1"
+ENV WP_TESTS_TAG "tags/4.8.1"
 
 # Download WordPress from source
 RUN mkdir -p $WP_CORE_DIR

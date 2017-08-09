@@ -19,6 +19,8 @@ In this attempt, I am creating a docker which would have the following installed
 
 * `PHP-7.0`
 * `Nodejs` and `npm`
+* `Grunt-CLI` installed globally.
+* `Bower` installed globally.
 * `Git`
 * `vim wget zip unzip subversion mysql-client libmcrypt-dev libmysqlclient-dev zip unzip openssh-client gettext`
 * `PHPUnit` - PHAR Install.
