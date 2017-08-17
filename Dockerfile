@@ -2,7 +2,7 @@
 # Run unittests, build with grunt or install your own packages with npm
 
 # Start from php image
-FROM php:7
+FROM php:7.0
 
 # Maintainer
 MAINTAINER Swashata Ghosh <swashata4u@gmail.com>
@@ -21,18 +21,18 @@ RUN apt-get install -yqqf --fix-missing \
   vim wget curl zip unzip subversion mysql-client libmcrypt-dev libmysqlclient-dev zip unzip openssh-client gettext
 
 # Install MYSQL driver
-RUN docker-php-ext-install mysqli pdo_mysql mbstring
+RUN docker-php-ext-install mysqli pdo_mysql mbstring mcrypt
 
 # Install XDEBUG
 RUN pecl install xdebug
 
 # Enable needed PHP extensions
-RUN docker-php-ext-enable mysqli pdo_mysql mbstring xdebug
+RUN docker-php-ext-enable mysqli pdo_mysql mbstring xdebug mcrypt
 
 # Install PHPUnit tests
-RUN wget https://phar.phpunit.de/phpunit-6.1.phar && \
-  chmod +x phpunit-6.1.phar && \
-  mv phpunit-6.1.phar /usr/local/bin/phpunit
+RUN wget https://phar.phpunit.de/phpunit-6.3.phar && \
+  chmod +x phpunit-6.3.phar && \
+  mv phpunit-6.3.phar /usr/local/bin/phpunit
 
 # Install composer
 RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
