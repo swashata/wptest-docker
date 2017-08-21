@@ -18,16 +18,20 @@ RUN apt-get install git -yqq
 
 # Install core dependencies
 RUN apt-get install -yqqf --fix-missing \
-  vim wget curl zip unzip subversion mysql-client libmcrypt-dev libmysqlclient-dev zip unzip openssh-client gettext
+  vim wget curl zip unzip subversion mysql-client libmcrypt-dev libmysqlclient-dev zip unzip openssh-client gettext libfreetype6-dev libjpeg62-turbo-dev libpng12-dev
 
-# Install MYSQL driver
-RUN docker-php-ext-install mysqli pdo_mysql mbstring mcrypt
+# Install PHP Extensions
+RUN docker-php-ext-install mysqli pdo_mysql mbstring mcrypt zip gd
+
+# Configure PHP-GD
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+RUN docker-php-ext-install gd
 
 # Install XDEBUG
 RUN pecl install xdebug
 
 # Enable needed PHP extensions
-RUN docker-php-ext-enable mysqli pdo_mysql mbstring xdebug mcrypt
+RUN docker-php-ext-enable mysqli pdo_mysql mbstring xdebug mcrypt zip gd
 
 # Install PHPUnit tests
 RUN wget https://phar.phpunit.de/phpunit-6.3.phar && \
