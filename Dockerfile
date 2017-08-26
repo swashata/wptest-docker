@@ -111,7 +111,7 @@ RUN mkdir -p ~/.ssh && \
 RUN cd ~
 RUN wget https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.0.3.778-linux.zip
 RUN unzip sonar-scanner-cli-3.0.3.778-linux.zip
-RUN mv sonar-scanner-cli-3.0.3.778-linux /opt/sonar-scanner/
+RUN mv sonar-scanner-3.0.3.778-linux /opt/sonar-scanner/
 RUN rm -f sonar-scanner-cli-3.0.3.778-linux.zip
 RUN export PATH="/opt/sonar-scanner/bin:$PATH"
 RUN sonar-scanner -h
