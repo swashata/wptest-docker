@@ -107,4 +107,13 @@ RUN mkdir -p ~/.ssh && \
   eval $(ssh-agent -s) && \
   echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
 
+# Setup Sonar Scanner
+RUN cd ~
+RUN wget https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.0.3.778-linux.zip
+RUN unzip sonar-scanner-cli-3.0.3.778-linux.zip
+RUN mv sonar-scanner-cli-3.0.3.778-linux /opt/sonar-scanner/
+RUN rm -f sonar-scanner-cli-3.0.3.778-linux.zip
+RUN export PATH="/opt/sonar-scanner/bin:$PATH"
+RUN sonar-scanner -h
+
 ## That's it, let pray it works
