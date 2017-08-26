@@ -113,7 +113,7 @@ RUN wget https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-sc
 RUN unzip sonar-scanner-cli-3.0.3.778-linux.zip
 RUN mv sonar-scanner-3.0.3.778-linux /opt/sonar-scanner/
 RUN rm -f sonar-scanner-cli-3.0.3.778-linux.zip
-RUN export PATH="/opt/sonar-scanner/bin:$PATH"
-RUN /opt/sonar-scanner/bin/sonar-scanner -h
+ENV PATH="/opt/sonar-scanner/bin:${PATH}"
+RUN sonar-scanner -h
 
 ## That's it, let pray it works
