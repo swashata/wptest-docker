@@ -18,7 +18,7 @@ RUN apt-get install git -yqq
 
 # Install core dependencies
 RUN apt-get install -yqqf --fix-missing \
-  vim wget curl zip unzip subversion mysql-client libmcrypt-dev libmysqlclient-dev zip unzip openssh-client gettext libfreetype6-dev libjpeg62-turbo-dev libpng12-dev xvfb fonts-ipafont-gothic xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic python
+  vim wget curl zip unzip subversion mysql-client libmcrypt-dev libmysqlclient-dev openssh-client gettext libfreetype6-dev libjpeg62-turbo-dev libpng12-dev xvfb fonts-ipafont-gothic xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic python
 
 
 # Install Chrome WebDriver
