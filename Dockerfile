@@ -116,4 +116,7 @@ RUN rm -f sonar-scanner-cli-3.0.3.778-linux.zip
 ENV PATH="/opt/sonar-scanner/bin:${PATH}"
 RUN sonar-scanner -h
 
+# Install gulp
+RUN npm install -g gulp-cli
+
 ## That's it, let pray it works
